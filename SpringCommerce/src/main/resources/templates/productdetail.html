@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Chi tiết sản phẩm</title>
+  <style>
+    body {
+      background-color: #f0f0f0;
+      font-family: Arial, sans-serif;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      color: #333;
+      margin-bottom: 1rem;
+    }
+
+    p {
+      font-size: 1.25rem;
+      color: #555;
+      margin-bottom: 0.5rem;
+    }
+
+    #product-name {
+      font-weight: bold;
+    }
+
+    #add-to-cart-btn {
+      background-color: #3498db;
+      color: #fff;
+      border: none;
+      padding: 0.75rem 1.5rem;
+      font-size: 1.25rem;
+      border-radius: 0.25rem;
+      cursor: pointer;
+      margin-top: 1rem;
+    }
+  </style>
+</head>
+<body>
+<div>
+  <h1>Thông tin sản phẩm</h1>
+  <p>Loại sản phẩm: <span th:text="${product.category}" id="product-name"></span></p>
+  <p>Mô tả: id="product-description"></span></p>
+  <p>Giá: <span th:text="${product.price}" id="product-price"></span></p>
+  <p>Thương hiệu: <span th:text="${product.brand}" id="product-brand"></span></p>
+  <p>Màu sắc: <span th:text="${product.color}" id="product-color"></span></p>
+  <button id="add-to-cart-btn">Thêm vào giỏ hàng</button>
+</div>
+<script type="text/javascript">
+  document.getElementById("add-to-cart-btn").addEventListener("click", function(){
+    window.location.href = "/cart";
+  });
+</script>
+</body>j
+</html>

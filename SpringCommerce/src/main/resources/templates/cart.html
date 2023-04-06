@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+  <title>Giỏ hàng</title>
+</head>
+<body>
+<h1>Danh sách sản phẩm trong giỏ hàng</h1>
+<div class="cart-info">
+  <p>Số lượng sản phẩm: <span th:text="${totalQuantity}"></span></p>
+  <p>Tổng tiền: <span th:text="${totalAmount}"></span></p>
+</div>
+
+<!-- hiển thị danh sách sản phẩm trong giỏ hàng -->
+<table class="cart-items">
+  <tr>
+    <th>Id</th>
+    <th>Sản phẩm</th>
+    <th>Số lượng</th>
+    <th>Giá</th>
+  </tr>
+  <tr th:each="item : ${cartItems}">
+    <td th:text="${item.product.getId()}"></td>
+    <td th:text="${item.product.getName()}"></td>
+    <td th:text="${item.getQuantity()}"></td>
+    <td th:text="${item.getTotalPrice()}"></td>
+  </tr>
+</table>
+<div>
+  <h3>Tổng tiền: <span th:text="${total}"></span></h3>
+  <a href="/" th:href="@{/}">Tiếp tục mua hàng</a>
+</div>
+</body>
+</html>

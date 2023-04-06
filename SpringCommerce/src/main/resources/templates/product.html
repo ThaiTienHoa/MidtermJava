@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>a</title>
+    <style>
+        .search {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            border: none;
+            border-radius: 20px 0 0 20px;
+            font-size: 16px;
+            width: 250px;
+        }
+
+        button[type="submit"] {
+            background-color: #4CAF50;
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            border-radius: 0 20px 20px 0;
+            cursor: pointer;
+        }
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+        }
+
+
+
+        h1 {
+            text-align: center;
+            color: #333;
+        }
+
+
+        .product img {
+            flex: 1;
+            max-width: 200px;
+            max-height: 200px;
+            margin-right: 20px;
+        }
+
+        .product h2 {
+            flex: 2;
+            font-size: 20px;
+            margin: 0;
+            color: #333;
+        }
+
+        .product p {
+            flex: 3;
+            margin: 0;
+            color: #666;
+        }
+
+        .product .info {
+            flex: 4;
+        }
+
+        .product .info ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .product .info li {
+            margin-bottom: 5px;
+            color: #666;
+        }
+
+        .product .info .category {
+            font-weight: bold;
+        }
+
+        /*.product .info .price {*/
+        /*    font-weight: bold;*/
+        /*    !*color: green;*!*/
+        /*}*/
+
+        .product .info .brand {
+            color: blue;
+        }
+
+        .product .info .color {
+            color: red;
+        }
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        thead {
+            background-color: #f2f2f2;
+        }
+
+        th,
+        td {
+            text-align: left;
+            padding: 8px;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+
+    </style>
+</head>
+
+<body>
+<div class="search">
+    <form>
+        <input type="text" placeholder="Tìm kiếm...">
+        <button type="submit">Tìm kiếm</button>
+    </form>
+</div>
+<table>
+    <thead style="background-color: #4caf50">
+    <tr>
+        <th>STT</th>
+        <th>Danh mục sản phẩm</th>
+        <th>Giá tiền</th>
+        <th>Thương hiệu</th>
+        <th>Màu sắc</th>
+    </tr>
+    </thead>
+    <tbody style="background-color: chocolate">
+    <th:block th:each="product : ${productList}">
+        <tr>
+            <th>[[${product.id}]]</th>
+            <th>[[${product.category}]]</th>
+            <th>[[${product.price}]]</th>
+            <th>[[${product.brand}]]</th>
+            <th>[[${product.color}]]</th>
+            <td><a th:href="@{/product/{id}(id=${product.id})}">Chi tiết</a></td>
+            <td><a th:href="@{/product/edit/{id}(id=${product.getId()})}">Edit</a></td>
+            <td><a th:href="@{/product/delete/{id}(id=${product.getId()})}">Delete</a></td>
+        </tr>
+    </th:block>
+    </tbody>
+</table>
+<td><a th:href="@{/product/new}">Thêm một sản phẩm mới</a></td>
+</body>
+</html>
