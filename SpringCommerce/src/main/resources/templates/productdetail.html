@@ -2,12 +2,14 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
   <title>Chi tiết sản phẩm</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
   <style>
     body {
       background-color: #f0f0f0;
       font-family: Arial, sans-serif;
     }
-
     h1 {
       font-size: 2.5rem;
       color: #333;
@@ -37,19 +39,27 @@
   </style>
 </head>
 <body>
-<div>
-  <h1>Thông tin sản phẩm</h1>
-  <p>Loại sản phẩm: <span th:text="${product.category}" id="product-name"></span></p>
-  <p>Mô tả: id="product-description"></span></p>
-  <p>Giá: <span th:text="${product.price}" id="product-price"></span></p>
-  <p>Thương hiệu: <span th:text="${product.brand}" id="product-brand"></span></p>
-  <p>Màu sắc: <span th:text="${product.color}" id="product-color"></span></p>
-  <button id="add-to-cart-btn">Thêm vào giỏ hàng</button>
+<div class="container my-4">
+  <h1 class="text-center mb-4">Thông tin sản phẩm</h1>
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="card-title">Loại sản phẩm: <span id="product-name" th:text="${product.category}"></span></h5>
+          <p class="card-text">Mô tả: <span id="product-description"></span></p>
+          <p class="card-text">Giá: <span id="product-price" th:text="${product.price}"></span></p>
+          <p class="card-text">Thương hiệu: <span id="product-brand" th:text="${product.brand}"></span></p>
+          <p class="card-text">Màu sắc: <span id="product-color" th:text="${product.color}"></span></p>
+          <button id="add-to-cart-btn" class="btn btn-primary">Thêm vào giỏ hàng</button>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 <script type="text/javascript">
   document.getElementById("add-to-cart-btn").addEventListener("click", function(){
     window.location.href = "/cart";
   });
 </script>
-</body>j
+</body>
 </html>

@@ -1,47 +1,56 @@
 package com.example.SpringCommerce.product;
 
+import jakarta.persistence.*;
+import org.springframework.data.annotation.Id;
+
+@Entity
 public class CartItem {
-    private product product;
-    private int productId;
-    private int quantity;
-    private double price;
 
-    public CartItem(com.example.SpringCommerce.product.product product, int productId, int quantity, double price) {
-        this.product = product;
-        this.productId = productId;
-        this.quantity = quantity;
-        this.price = price;
+    @jakarta.persistence.Id
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "product_id")
+    private product pro;
+
+    private Integer quantity;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "cart_id")
+    private Cart cart;
+
+    public Long getId() {
+        return id;
     }
 
-    public com.example.SpringCommerce.product.product getProduct() {
-        return product;
+    public void setId(Long id) {
+        this.id = id;
     }
 
-    public void setProduct(com.example.SpringCommerce.product.product product) {
-        this.product = product;
+    public product getPro() {
+        return pro;
     }
 
-    public int getProductId() {
-        return productId;
+    public void setPro(product pro) {
+        this.pro = pro;
     }
 
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
-
-    public int getQuantity() {
+    public Integer getQuantity() {
         return quantity;
     }
 
-    public void setQuantity(int quantity) {
+    public void setQuantity(Integer quantity) {
         this.quantity = quantity;
     }
 
-    public double getPrice() {
-        return price;
+    public Cart getCart() {
+        return cart;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setCart(Cart cart) {
+        this.cart = cart;
     }
+
 }
